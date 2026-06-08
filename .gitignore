@@ -12,6 +12,10 @@ resources/
 # Claude Code internal config
 .claude/
 
+# Client data and test runs — private, never commit
+skills/client/
+skills/test/
+
 # macOS
 .DS_Store
 

@@ -107,8 +107,8 @@ Each client has a folder with their specific config. Skills read these at runtim
 
 | Client | Config | Signal Library | Status |
 |--------|--------|----------------|--------|
-| Lazer Logistics | ✅ [client-profile.yaml](client/lazer/client-profile.yaml) | ✅ In monolith (needs extraction to signal-library.md) | Active |
-| ISCO | ✅ [client-profile.yaml](client/isco/client-profile.yaml) (template) | 🔴 Pending — run signal-hunter once ICP onboarding complete | Pending docs from Dan |
+| [Client A] | `client/[client-a]/client-profile.yaml` (local only) | ✅ Active | Active |
+| [Client B] | `client/[client-b]/client-profile.yaml` (local only) | 🔴 Pending | In progress |
 
 ---
 
@@ -118,7 +118,7 @@ Each client has a folder with their specific config. Skills read these at runtim
 |-----------|-------------|-----------------|
 | Research pipeline (web crawl, OSHA, LinkedIn) | ✅ Same for all | — |
 | ICP scoring criteria (revenue, size, vertical) | Base logic same | Parameters change per client |
-| Signal list (15 signals for Lazer) | Base structure same | Signal definitions change per industry |
+| Signal list (per client) | Base structure same | Signal definitions change per industry |
 | Signal weights + conviction algorithm | Base formula same | Weights change per client |
 | Dossier sections + format | Template same | Narrative tone + sales context change |
 | Email rules (75w/35w, no pitch, peer-to-peer) | ✅ Same for all | Lead signal + first-line observation change |
@@ -126,15 +126,13 @@ Each client has a folder with their specific config. Skills read these at runtim
 
 ---
 
-## Skills Dan mentioned wanting (from June 2026 meetings)
-
-From the Lazer program review + skill demo meeting:
+## Skills roadmap (from internal meetings)
 
 1. **ICP Onboarding skill** — conversational intake for any new client → ✅ built as `skill-icp-onboarding.md`; produces `client-profile.yaml` + calibrated `icp-prompt.md`
 2. **ICP Fit Scoring skill** — parameterized so any client's ICP can be loaded in → ✅ built as `skill-icp-fit-scoring.md`
 3. **Email Personalization skill** — one deliverable per client; BD rep runs it in their own Claude → ✅ built as `skill-email-personalization.md`
 4. **Signal Hunter (generic)** — give it the ICP and it proposes signals; client approves in workshop → 🔴 needs to be built
-5. **Conviction Algorithm (standalone)** — currently embedded in Mode A, Dan wants it visible and explainable → 🟡 needs to be extracted + documented
+5. **Conviction Algorithm (standalone)** — currently embedded in Mode A, needs to be visible and explainable → 🟡 needs to be extracted + documented
 6. **Contact Mapping** — who to call, why, in what order → 🔴 needs to be built (Agent 09)
 
 **Dan's rule:** *"If you can't fully explain it, you probably shouldn't be doing it."*  
@@ -159,8 +157,7 @@ A skill is **done** when it has all of the following:
 
 ## Next priorities
 
-1. Extract base skill files from the Lazer skill (already done conceptually — needs clean standalone docs)
-2. Build **Signal Hunter (generic)** — needed for ISCO onboarding
-3. Build **Contact Mapping** — Agent 09 is unbuilt
-4. Document **Conviction Algorithm** as standalone — Dan wants it explainable
-5. Create `client/isco/` skill files once Dan sends discovery docs
+1. Build **Signal Hunter (generic)** — needed for new client onboarding
+2. Build **Contact Mapping** — Agent 09 is unbuilt
+3. Document **Conviction Algorithm** as standalone — needs to be explainable step by step
+4. Batch processing — run pipeline on 100+ accounts via subagent pattern

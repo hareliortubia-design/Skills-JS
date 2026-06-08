@@ -37,14 +37,11 @@ skills/
 │   └── skill-salesforce-export.md   ← CSV for any CRM
 │
 ├── client/
-│   ├── lazer/
-│   │   └── client-profile.yaml      ← Lazer Logistics — ICP + 15 signals ✅ ACTIVE
-│   └── isco/
-│       └── client-profile.yaml      ← ISCO Industries — v0.5 draft, 8 gaps pending
+│   └── [client-name]/
+│       └── client-profile.yaml      ← Client-specific ICP + signals (not in repo)
 │
 └── test/
-    ├── weathertech/                  ← Test run: WeatherTech for Lazer (PENDING result)
-    └── freeport-mcmoran/            ← Test run: Freeport-McMoRan for ISCO (HIGH result)
+    └── [account-name]/              ← Pipeline outputs per account (not in repo)
 ```
 
 ---
@@ -117,10 +114,8 @@ STAGE 4 — CRM (all qualified accounts)
 
 ## Active clients
 
-| Client | Profile status | Signals | Next step |
-|--------|---------------|---------|-----------|
-| Lazer Logistics | ✅ v1.0 Active | 15 signals defined | Run signal library extraction |
-| ISCO Industries | ⚠️ v0.5 Draft | 12 signals draft | Discovery session — 8 gaps to fill |
+Client profiles and pipeline outputs are stored locally — not in this repository.  
+Each client folder lives in `skills/client/[client-name]/` and is excluded via `.gitignore`.
 
 ---
 

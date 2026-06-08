@@ -154,7 +154,7 @@ Claude will read the skill file and start the pipeline orchestrator. It will ask
    → It produces: research-brief.json
 
 3. /skill-icp-fit-scoring
-   → Give it: the research brief + client name (e.g. ISCO)
+   → Give it: the research brief + client name (e.g. [client-name])
    → It produces: Tier 1 / Tier 2 / Not ICP with a score
 
 4. /skill-signal-research
@@ -260,7 +260,7 @@ Run skill-jumpseat-kickoff
 Or if you already know what you want to do:
 
 ```
-Run skill-deep-research for company: Freeport-McMoRan, website: fcx.com
+Run skill-deep-research for company: [company-name], website: [website.com]
 ```
 
 Claude will read the skill from the Project Knowledge and execute it step by step.

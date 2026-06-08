@@ -151,7 +151,7 @@ Paso 2: /skill-deep-research
          → Claude produce: research-brief.json
 
 Paso 3: /skill-icp-fit-scoring
-         → Tenés que darle: research-brief.json + nombre del cliente (ej: ISCO)
+         → Tenés que darle: research-brief.json + nombre del cliente (ej: [nombre-cliente])
          → Claude produce: score Tier 1 / 2 / No ICP
 
 Paso 4: /skill-signal-research
@@ -233,7 +233,7 @@ Esta opción usa Claude directamente en el browser. No requiere instalar nada ni
 
 Pedile a Hareli que te comparta:
 - La carpeta `skills/base/` completa (los 10 archivos `.md`)
-- El `client-profile.yaml` del cliente que vas a usar (ej: `skills/client/lazer/` o `skills/client/isco/`)
+- El `client-profile.yaml` del cliente que vas a usar (Hareli te lo envía por separado — no está en el repo)
 
 Podés recibirlos por email, Google Drive, o cualquier medio de archivo compartido.
 
@@ -246,7 +246,7 @@ Claude Projects permite subir archivos que Claude tiene en contexto permanente �
 1. Ir a **claude.ai** en el browser
 2. Iniciar sesión
 3. En el panel izquierdo, click en **"New Project"** (o "Nuevo Proyecto")
-4. Nombrarlo: `JumpSeat × Lazer` (o el nombre del cliente)
+4. Nombrarlo: `JumpSeat × [Nombre del cliente]`
 5. En la sección **"Project Knowledge"** (Conocimiento del proyecto):
    - Click en "Add content" o "Upload files"
    - Subir **todos** los archivos `.md` de `skills/base/`
@@ -261,13 +261,13 @@ Claude Projects permite subir archivos que Claude tiene en contexto permanente �
 Dentro del Proyecto de Claude, simplemente escribí en el chat:
 
 ```
-Corré skill-deep-research para la empresa Freeport-McMoRan, website fcx.com
+Corré skill-deep-research para la empresa [nombre-empresa], website [website.com]
 ```
 
 O más corto:
 
 ```
-/skill-deep-research — empresa: Freeport-McMoRan / fcx.com
+/skill-deep-research — empresa: [nombre-empresa] / [website.com]
 ```
 
 Claude lee el skill desde el conocimiento del Proyecto y lo ejecuta.
@@ -284,7 +284,7 @@ Estructura recomendada:
 ```
 JumpSeat/
   └── cuentas/
-        └── freeport-mcmoran/
+        └── [nombre-empresa]/
               ├── research-brief.json
               ├── icp-scoring.json
               ├── signals.json

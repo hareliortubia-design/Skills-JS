@@ -1,0 +1,21 @@
+# Personal session files — not part of the repo
+CONTEXT-nueva-conversacion.md
+SESSION-NOTES-*.md
+jumpseat-signal-agent-arquitectura.md
+
+# Personal folders
+Conversaciones MarkDown/
+Meeting Scripts/
+lazer-signal-intelligence/
+resources/
+
+# Claude Code internal config
+.claude/
+
+# macOS
+.DS_Store
+
+# Environment / secrets
+.env
+*.env.local
+secrets/

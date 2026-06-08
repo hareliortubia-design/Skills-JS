@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "account": "WeatherTech",
+    "client": "Lazer Logistics",
+    "skill": "skill-conviction-algorithm",
+    "date": "2026-06-06"
+  },
+
+  "step_1_raw_score": {
+    "confirmed_signals": ["YP-08"],
+    "raw_score": 1,
+    "note": "Only YP-08 (Multi-Site Network) is Confirmed. All Lead signals (LS-01, LB-01, LB-02, GR-01) are Not Found or Inferred."
+  },
+
+  "step_2_weighted_score": {
+    "breakdown": [
+      { "signal": "YP-08", "weight": 1.0, "contribution": 1.0, "stack": "Context" }
+    ],
+    "weighted_total": 1.0,
+    "note": "YP-08 is a structural Context signal — it confirms scale but is not urgency-driving."
+  },
+
+  "step_3_combo_bonus": {
+    "combos_triggered": [],
+    "bonus": 0,
+    "note": "No combos triggered. All combo conditions require LB-01, LB-02, LS-01, GR-01, or GR-02 — none confirmed."
+  },
+
+  "step_4_final_score": {
+    "weighted_score_with_bonus": 1.0,
+    "conviction_level_by_score": "PENDING",
+    "reasoning": "1 confirmed signal is below the MEDIUM threshold of 3. ICP fit is Tier 2 (7/10) — strong structural fit but no active buying signals confirmed."
+  },
+
+  "step_5_distraction_override": {
+    "dx_signal_confirmed": "DX-01",
+    "override": "PENDING — DX-01 confirmed overrides all scoring.",
+    "rule_applied": "If any DX signal is confirmed → move to PENDING regardless of conviction score.",
+    "detail": "CEO David MacNeil nominated for FTC (January 2026). Cannot outreach while leadership attention is on federal process."
+  },
+
+  "final_verdict": {
+    "conviction_level": "PENDING",
+    "urgency": "HOLD",
+    "lead_signal": "DX-01 (CEO FTC nomination — distraction active)",
+    "stack_story": "WeatherTech has ICP-adjacent scale (11 facilities, $500M+ rev) but zero active buying signals. CEO is in FTC confirmation process — outreach window is closed. Monitor for reactivation.",
+    "next_action": "Do NOT outreach. Add to PENDING queue. Set reactivation triggers.",
+    "reactivation_triggers": [
+      "Senate rejects FTC nomination OR MacNeil withdraws → window reopens",
+      "12th facility type confirmed as distribution center → re-research GR-01",
+      "Spotter/yard driver posting appears on Indeed/LinkedIn → LB-01 confirmed → re-score immediately",
+      "New VP Supply Chain / VP Logistics hire announced → LS-01 confirmed → CRITICAL urgency"
+    ],
+    "reverify_date": "2026-09-06"
+  }
+}

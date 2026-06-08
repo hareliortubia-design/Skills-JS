@@ -1,0 +1,177 @@
+{
+  "company": "Freeport-McMoRan Inc.",
+  "ticker": "FCX",
+  "website": "fcx.com",
+  "research_date": "2026-06-08",
+  "track": "B — jina + web only (no Python)",
+  "data_sources_used": ["jina_crawl", "sec_earnings_pdf", "investor_relations"],
+
+  "company_profile": {
+    "revenue_estimate": {
+      "value": "~$22B (2025 annual)",
+      "source": "FCX Q1 2026 earnings release + public record"
+    },
+    "employee_count": {
+      "value": "~28,000 globally",
+      "source": "Public record — SEC annual report"
+    },
+    "founded": "1987 (incorporated in Delaware)",
+    "ownership": "public",
+    "ownership_source": "NYSE: FCX",
+    "hq_address": "Phoenix, Arizona",
+    "all_known_locations": [
+      { "name": "Morenci", "state": "AZ", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "Bagdad", "state": "AZ", "type": "copper mine — expansion decision H2 2026", "source": "FCX Q1 2026 earnings" },
+      { "name": "Sierrita", "state": "AZ", "type": "copper/molybdenum mine", "source": "fcx.com/ops" },
+      { "name": "Miami", "state": "AZ", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "Safford/Lone Star", "state": "AZ", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "Chino", "state": "NM", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "Tyrone", "state": "NM", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "Henderson", "state": "NV", "type": "molybdenum mine", "source": "fcx.com/ops" },
+      { "name": "Climax", "state": "CO", "type": "molybdenum mine", "source": "fcx.com/ops" },
+      { "name": "Cerro Verde", "country": "Peru", "type": "copper mine", "source": "fcx.com/ops" },
+      { "name": "El Abra", "country": "Chile", "type": "copper mine — major expansion EIS filed March 2026", "source": "FCX Q1 2026 earnings" },
+      { "name": "Grasberg", "country": "Indonesia", "type": "copper/gold mine — block cave ramp-up ongoing", "source": "FCX Q1 2026 earnings" }
+    ],
+    "product_lines": ["Copper", "Gold", "Molybdenum"],
+    "business_model": "Large-scale, long-lived mineral extraction. Capital-intensive. Project-based infrastructure build-out at mine sites."
+  },
+
+  "leadership": {
+    "ceo": {
+      "name": "Kathleen Quirk",
+      "title": "President and CEO",
+      "tenure": "Long-tenure executive — no recent change",
+      "outside_roles": [],
+      "source": "FCX 2026 press releases"
+    },
+    "chairman": {
+      "name": "Richard Adkerson",
+      "title": "Executive Chairman",
+      "source": "FCX February 2026 press release"
+    },
+    "recent_leadership_changes": []
+  },
+
+  "job_postings": {
+    "track": "B — jina only",
+    "relevant_roles_active": [],
+    "repeat_postings": [],
+    "leadership_roles_active": [],
+    "note": "JobSpy not run — labor signals Unknown for this account. Manual check recommended on LinkedIn Jobs and Indeed for 'piping engineer', 'pipeline project manager', 'procurement manager' at FCX sites."
+  },
+
+  "sec_filings": {
+    "latest_8k": [
+      {
+        "date": "2026-02-18",
+        "summary": "Life-of-Resource extension of operating rights at Grasberg (Indonesia). MOU with Indonesian government. 12% stake transfer to government in 2041.",
+        "ma_flag": false,
+        "facility_flag": false,
+        "expansion_flag": true,
+        "source": "SEC 8-K FCX_260218.pdf — s22.q4cdn.com/529358580/files/doc_news/2026/FCX_260218.pdf"
+      },
+      {
+        "date": "2026-01-14",
+        "summary": "Asset acquisition or business combination. Details not extracted — PDF not accessed.",
+        "ma_flag": true,
+        "facility_flag": false,
+        "note": "Needs follow-up to confirm scope of acquisition",
+        "source": "SEC EDGAR 8-K metadata — efts.sec.gov"
+      }
+    ],
+    "10k_mda_excerpts": [
+      {
+        "text": "2026 CapEx: $4.3 billion total, including $3.0 billion for major mining projects. Bagdad (AZ) expansion: new concentrating facilities, 200-250 million lbs/year additional copper production, estimated $3.5B capital, investment decision targeted H2 2026.",
+        "cost_cut_flag": false,
+        "capex_flag": true,
+        "source": "FCX Q1 2026 Earnings Release — FCX_260423.pdf"
+      },
+      {
+        "text": "El Abra (Chile): Environmental impact statement submitted March 2026 for major mill facility. Potential 700+ million lbs/year copper production. Economics supported below $4.00/lb copper.",
+        "cost_cut_flag": false,
+        "expansion_flag": true,
+        "source": "FCX Q1 2026 Earnings Release — FCX_260423.pdf"
+      },
+      {
+        "text": "Operational excellence — carefully managing costs and near-term capital expenditures during phased ramp-up.",
+        "cost_cut_flag": false,
+        "efficiency_language": true,
+        "source": "FCX Q4 2025 / Full Year Earnings Release — FCX_260122.pdf"
+      }
+    ],
+    "10k_properties": [
+      { "location": "Bagdad, AZ", "status": "Active + expansion decision H2 2026", "source": "FCX Q1 2026 earnings" },
+      { "location": "Morenci, AZ", "status": "Active — largest US copper mine", "source": "FCX public record" },
+      { "location": "Sierrita, AZ", "status": "Active", "source": "fcx.com/ops" }
+    ]
+  },
+
+  "recent_news": {
+    "expansion_activity": [
+      {
+        "headline": "Bagdad (AZ) expansion: $3.5B new concentrating facilities — investment decision H2 2026",
+        "date": "2026-04-23",
+        "source": "FCX Q1 2026 Earnings Release — FCX_260423.pdf",
+        "signal": "PJ-01"
+      },
+      {
+        "headline": "El Abra (Chile) major mill facility: Environmental Impact Statement filed March 2026",
+        "date": "2026-03-XX",
+        "source": "FCX Q1 2026 Earnings Release",
+        "signal": "PJ-02 candidate (EIS = pre-permit stage)"
+      },
+      {
+        "headline": "Grasberg Block Cave ramp-up — infrastructure modifications underway, 65% capacity H2 2026",
+        "date": "2026-04-23",
+        "source": "FCX Q1 2026 Earnings Release",
+        "signal": "GR-01"
+      }
+    ],
+    "capex_news": [
+      {
+        "headline": "$4.3B total capex 2026 confirmed — $3.0B for major projects",
+        "date": "2026-04-23",
+        "source": "FCX Q1 2026 Earnings Release",
+        "signal": "FN-01"
+      }
+    ],
+    "ma_activity": [
+      {
+        "headline": "Asset acquisition — January 14, 2026 (details TBD from 8-K)",
+        "date": "2026-01-14",
+        "source": "SEC EDGAR 8-K metadata",
+        "signal": "GR-02 — needs confirmation"
+      }
+    ],
+    "leadership_news": [],
+    "distraction_signals": []
+  },
+
+  "osha_records": {
+    "note": "OSHA search tool accessed but results page not rendered. Manual lookup required at osha.gov for 'Freeport McMoRan' in AZ, NM, NV, CO.",
+    "citations_found": [],
+    "last_inspection": "Unknown — manual lookup needed"
+  },
+
+  "esg": {
+    "sustainability_report_url": "fcx.com/sustainability/reports-and-documents",
+    "annual_report": "2025 Annual Report on Sustainability published",
+    "cdp_participation": true,
+    "scope3_targets": "Climate action commitments published — specifics in sustainability report",
+    "certifications": ["ICMM membership", "CDP questionnaire participation", "Voluntary Principles on Security and Human Rights"],
+    "source": "fcx.com/sustainability/reports-and-documents"
+  },
+
+  "research_gaps": [
+    "Job postings not checked — Track B limitation. Recommend manual search for 'piping engineer', 'pipeline project manager', 'procurement manager' at FCX mines.",
+    "OSHA citation database not successfully queried — manual lookup needed at osha.gov.",
+    "January 2026 asset acquisition — need to confirm scope and whether it includes new US mine assets.",
+    "No VP/Director-level engineering or procurement leadership changes found — LS-01 = Unknown.",
+    "Bagdad construction permit — decision not yet made (H2 2026), so no permit filed yet. PJ-02 not confirmable until construction starts.",
+    "Incumbent HDPE supplier not identified — CT-01 Unknown."
+  ],
+
+  "confidence": "HIGH",
+  "confidence_reasoning": "Q1 2026 earnings release confirms $4.3B capex, $3.5B Bagdad expansion decision, and El Abra EIS. Multiple expansion signals confirmed from primary source (SEC-filed earnings PDF). Gaps are labor signals (Track B limitation) and permit timing (expansion not yet approved)."
+}

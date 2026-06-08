@@ -1,0 +1,53 @@
+{
+  "company": "Freeport-McMoRan Inc.",
+  "client": "ISCO Industries",
+  "scoring_date": "2026-06-08",
+
+  "icp_tier": "Tier 1",
+  "icp_score": 10,
+
+  "signal_scoring": [
+    { "code": "PJ-01", "stack": "Lead", "weight": 2.0, "classification": "C", "points": 4.0, "note": "Two confirmed projects (Bagdad + El Abra) — scored as 2×2.0" },
+    { "code": "GR-01", "stack": "Lead", "weight": 1.5, "classification": "C", "points": 1.5 },
+    { "code": "FN-01", "stack": "Support", "weight": 1.25, "classification": "C", "points": 1.25 },
+    { "code": "SU-01", "stack": "Support", "weight": 1.0, "classification": "C", "points": 1.0 },
+    { "code": "PJ-02", "stack": "Lead", "weight": 2.0, "classification": "I", "points": 0, "note": "Inferred — EIS filed but no confirmed permit. Upgrade to C when Bagdad FID announced H2 2026." },
+    { "code": "GR-02", "stack": "Lead", "weight": 1.5, "classification": "I", "points": 0, "note": "8-K asset acquisition — needs content review." },
+    { "code": "RC-01", "stack": "Lead", "weight": 1.5, "classification": "I", "points": 0 },
+    { "code": "LS-01", "stack": "Lead", "weight": 2.0, "classification": "U", "points": 0, "note": "Unknown — manual LinkedIn check needed. If confirmed, score jumps to CRITICAL." }
+  ],
+
+  "signal_combos_evaluated": [
+    {
+      "combo": ["PJ-01", "PJ-02"],
+      "bonus": 2.0,
+      "triggered": false,
+      "note": "PJ-02 is Inferred, not Confirmed. Bonus does not apply. Will trigger when Bagdad permit is filed."
+    }
+  ],
+
+  "distraction_signals": {
+    "DX-01": "N — clear",
+    "DX-02": "N — clear",
+    "DX-03": "N — clear",
+    "any_stop": false,
+    "any_flag": false
+  },
+
+  "raw_conviction_score": 7.75,
+  "conviction_level": "HIGH",
+  "urgency": "HIGH",
+  "priority_rank": "Outreach this week",
+
+  "conviction_reasoning": "Freeport-McMoRan scores 7.75 conviction points driven by two confirmed project announcements (Bagdad $3.5B + El Abra), confirmed facility expansion, $4.3B capex budget, and published ESG commitments. No distraction signals. Tier 1 ICP, 10/10 fit. The Bagdad investment decision (H2 2026) creates a time-sensitive procurement window — ISCO must be in the conversation before FID is made. Score can reach 11.75 if Bagdad permit is confirmed (PJ-02 → C) and LS-01 is verified.",
+
+  "upside_signals": [
+    { "code": "PJ-02", "condition": "Bagdad FID announced H2 2026 → construction permit filed", "score_add": 2.0 },
+    { "code": "LS-01", "condition": "New VP Capital Projects or VP Engineering at Bagdad confirmed via LinkedIn", "score_add": 2.0 },
+    { "code": "GR-02", "condition": "January 2026 8-K acquisition confirmed as physical mine assets", "score_add": 1.5 }
+  ],
+
+  "reactivation_trigger": "N/A — account is HIGH, not PENDING",
+
+  "recommended_action": "Build dossier immediately. Outreach this week. Focus angle: Bagdad expansion procurement window. Reference ISCO's Collahuasi copper mine project as proof of sector expertise."
+}

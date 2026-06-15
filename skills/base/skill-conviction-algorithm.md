@@ -1,5 +1,5 @@
 # Skill: Conviction Algorithm
-**JumpSeat Agent:** 07 Signal Conviction → 08 Prioritization & Stacking  
+**JumpSeat Agents:** 07 Conviction Scoring → 08 Prioritization & Stacking  
 **Type:** Base — works for any client  
 **Version:** 1.0 | June 2026
 

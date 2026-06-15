@@ -1,5 +1,5 @@
 # Skill: Salesforce Export
-**Mode:** D | **JumpSeat Agent:** 18 Analytics & Metrics  
+**Mode:** D | **JumpSeat Agent:** 23 Export & Delivery  
 **Type:** Base (reutilizable) | **Version:** 1.0 — June 2026
 
 ---

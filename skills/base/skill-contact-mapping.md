@@ -1,5 +1,5 @@
 # Skill: Contact Mapping
-**JumpSeat Agent:** 09 Contact Mapping  
+**JumpSeat Agents:** 13 Contact Mapping + 14 Persona Intelligence  
 **Type:** Base — works for any client  
 **Version:** 1.0 | June 2026
 

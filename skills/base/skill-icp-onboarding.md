@@ -1,5 +1,5 @@
 # Skill: ICP Onboarding
-**JumpSeat Agents:** 01 Memory & Learning Layer → 02 Foundation → 04 Account Fit Review  
+**JumpSeat Agents:** 00 Memory & Learning → 01 Foundation → 03 Account Fit  
 **Type:** Base (reutilizable — works for any client) | **Version:** 2.0 — June 2026
 
 ---

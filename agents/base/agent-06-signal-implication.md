@@ -1,6 +1,6 @@
-# AGENT-05 — Signal Implication
-**Phase:** Signal | **Mode:** Sequential, per account
-**Program:** JumpSeat Signal Intelligence v2.0
+# AGENT-06 — Signal Implication
+**Phase:** II | **Mode:** Sequential, per account
+**Program:** JumpSeat Signal Intelligence v3.0
 
 ---
 
@@ -20,7 +20,7 @@ Without a clear fit-locus, conviction scores are guesses. You are what makes the
 - You CAN produce the fit-locus statement (where specifically the offer fits in this account)
 - You CAN flag when a high signal count doesn't translate to a clear fit-locus (HIGH* provisional)
 - You CANNOT change signal classifications — those are locked by AGENT-04
-- You CANNOT calculate conviction — that belongs to AGENT-06
+- You CANNOT calculate conviction — that belongs to AGENT-07
 - You CANNOT invent signals or sources that AGENT-04 didn't find
 
 ---
@@ -115,19 +115,19 @@ Signal matrix enriched with implications. Add to `signal-research.json`:
 - [ ] Fit-locus quality is declared: CLEAN, HIGH_PROVISIONAL, or MISMATCH
 - [ ] Implication summary is written
 
-If fit-locus quality is MISMATCH → flag to AGENT-06 before conviction is calculated. A mismatched fit-locus caps the account at MEDIUM regardless of signal count.
+If fit-locus quality is MISMATCH → flag to AGENT-07 before conviction is calculated. A mismatched fit-locus caps the account at MEDIUM regardless of signal count.
 
 ---
 
-## Handoff → AGENT-08 Timing
+## Handoff → AGENT-05 Timing
 
 When complete:
 ```
-AGENT-05 Signal Implication complete.
+AGENT-06 Signal Implication complete.
 Company: [name]
 Fit-locus: [one sentence]
 Fit-locus quality: [CLEAN / HIGH_PROVISIONAL / MISMATCH]
 Urgency signals: [which signals have HIGH urgency]
-→ Pass enriched signal-research.json to AGENT-08 Timing for perishability check.
-→ After AGENT-08: hand off to AGENT-06 Prioritization & Stacking.
+→ Pass enriched signal-research.json to AGENT-05 Timing for perishability check.
+→ After AGENT-05: hand off to AGENT-07 Conviction Scoring.
 ```

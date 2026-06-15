@@ -1,12 +1,12 @@
 # JumpSeat Skills Inventory
-**Maintained by:** Hareli Ortubia | **Last updated:** June 2026  
-**Program:** JumpSeat Signal Intelligence Agent OS
+**Maintained by:** Hareli Ortubia | **Last updated:** June 2026
+**Program:** JumpSeat Signal Intelligence Agent OS v3.0 (27 agents, 00–26)
 
 ---
 
 ## What is a skill?
 
-A skill is a set of instructions that defines **what an agent does, how it does it, and with what parameters.**  
+A skill is a set of instructions that defines **what an agent does, how it does it, and with what parameters.**
 The agent executes the work. The skill is the guide.
 
 ```
@@ -22,58 +22,98 @@ There are two types:
 
 ---
 
-## Full Pipeline Flow
+## Full Pipeline Flow (v3.0)
 
 ```
-INPUT: Company name + website URL
+INPUT: Client brief + account list
        ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 1 — RESEARCH                                              │
-│ Skill: Deep Research (MODE R)                                   │
-│ Agent: 03 Research                                              │
-│ Artifact: Research Brief JSON                                   │
-│ (web crawl, LinkedIn, OSHA, news, job postings)                 │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 2 — ICP FIT GATE                                          │
-│ Skill: ICP Fit Scoring (MODE 0)                                 │
-│ Agent: 04 Account Fit Review                                    │
-│ Artifact: Fit Tier (Tier 1 / Tier 2 / Not ICP) + Fit Score     │
-│ → Not ICP: STOP. Do not invest in signal research.              │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓ (Tier 1 + Tier 2 only)
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 3 — SIGNAL RESEARCH                                       │
-│ Skill: Signal Research (MODE A)                                 │
-│ Agents: 05 Signal Hunter → 06 Signal Implication               │
-│         → 07 Signal Conviction → 08 Prioritization & Stacking  │
-│ Artifact: 15 signals C/I/N/U + Conviction Score + Weighted Score│
-│ → CRITICAL/HIGH → Stage 4                                       │
-│ → MEDIUM → queue for next sprint                                │
-│ → LOW/PENDING → monitor queue                                   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓ (HIGH + CRITICAL only)
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 4 — DOSSIER                                               │
-│ Skill: Dossier Builder (MODE B)                                 │
-│ Agents: 03 Research + 09 Contact Mapping + 16 Persona Intel     │
-│ Artifact: 4–5 page intelligence dossier (sales rep reads first) │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 5 — OUTREACH                                              │
-│ Skill: Email Personalization (MODE C)                           │
-│ Agent: 12 Cold Email Copywriter                                 │
-│ Artifact: Email 1 (≤75w) + Email 2 (≤35w)                      │
-└──────────────────────────┬──────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ STAGE 6 — CRM EXPORT                                            │
-│ Skill: Salesforce Export (MODE D)                               │
-│ Agent: 18 Analytics & Metrics                                   │
-│ Artifact: CSV for Salesforce import (future: direct API write)  │
-└─────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│ ONBOARDING — New client only                                         │
+│ Skills: skill-jumpseat-kickoff → skill-icp-onboarding               │
+│ Agents: 00 Memory + 01 Foundation                                    │
+│ Artifact: client-profile.yaml (ICP, signals, scoring parameters)    │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE I — RESEARCH (per account)                                     │
+│ Skill: skill-deep-research                                           │
+│ Agent: 02 Research                                                   │
+│ Artifact: research-brief.json                                        │
+│           ↓                                                          │
+│ Skill: skill-icp-fit-scoring                                         │
+│ Agent: 03 Account Fit                                                │
+│ Artifact: icp-fit-scoring.json (Tier 1 / Tier 2 / Not ICP)         │
+│ → Not ICP: STOP. Route to 18 Objection & Reactivation.              │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓ (Tier 1 + Tier 2 only)
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE II — SIGNAL PHASE (per qualified account)                     │
+│ Skill: skill-signal-hunter (signal library workshop — runs once)    │
+│ Agent: 04 Signal Hunter                                              │
+│ Artifact: signal-library.md (30–50 candidates → client workshop)    │
+│           ↓                                                          │
+│ Skill: skill-signal-research                                         │
+│ Agents: 04 Signal Hunter → 06 Signal Implication →                  │
+│          05 Timing → 07 Conviction Scoring → 08 Prioritization       │
+│ Artifact: signal-research.json (C/I/N/U + implications + timing)    │
+│           ↓                                                          │
+│ Skill: skill-conviction-algorithm                                    │
+│ Agents: 07 Conviction Scoring + 08 Prioritization & Stacking        │
+│ Artifact: conviction-output.json (score + level + stacking narrative)│
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE III — SIGNAL QA & ACCOUNT LIST  [NEW]                         │
+│ Skill: skill-signal-validation                                       │
+│ Agents: 09 Signal QA → 10 Account List                              │
+│ Artifact: signal-qa-[company].md (first client artifact)            │
+│           sqal-[client]-[sprint].md (SQAL)                          │
+│ → HIGH: ADVANCE to Phase IV                                          │
+│ → MEDIUM: sprint queue                                               │
+│ → LOW / DEPRIORITIZED / FLAG: monitor queue                          │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓ (HIGH accounts only)
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE IV — DEEP RESEARCH / ACCOUNT DOSSIERS                         │
+│ Skill: skill-dossier-builder                                         │
+│ Agents: 11 Account Narrative + 12 Messaging Strategist              │
+│ Artifact: account-narrative-[company].md + dossier-[company].md     │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE V — CONTACTS & PERSONAS                                        │
+│ Skill: skill-contact-mapping                                         │
+│ Agents: 13 Contact Mapping + 14 Persona Intelligence (run together) │
+│ Artifact: contact-map-[company].md + persona-brief-[company].md     │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE VI — MESSAGING & SEQUENCE                                      │
+│ Skill: skill-email-personalization                                   │
+│ Agents: 15 Cold Email Copywriter + 16 Sequence Design               │
+│ Artifact: emails-[company].md (3 variants) + sequence per contact   │
+└──────────────────────────────┬───────────────────────────────────────┘
+                               ↓
+┌──────────────────────────────────────────────────────────────────────┐
+│ PHASE VIII — PRODUCTION IMPLEMENTATION  [NEW]                        │
+│ Skill: skill-qa-export                                               │
+│ Agents: 22 Workflow Auditor → 23 Export & Delivery                  │
+│ Artifact: qa-log + CRM export CSV + SE platform export              │
+└──────────────────────────────────────────────────────────────────────┘
+
+ALWAYS ON (every sprint)
+  17 Feedback Loop → reply rate by signal → feeds 00 Memory
+  18 Objection & Reactivation → DEPRIORITIZED accounts
+  19 Analytics & Metrics → program metrics + System Health Score
+  20 Deal Acceleration → active opportunities (post first meeting)
+  21 Prospecting → net-new account candidates → feeds back to Phase I
+  24 Signal Monitor → batch signal refresh (Phase IX)
+  25 Program Calibration → quarterly methodology audit (Phase IX)
+
+HVO (runs independently — not in the sprint pipeline)
+  Skill: skill-hvo-pitch
+  Agent: 26 HVO Pitch Builder
+  Artifact: SI one-pager + HVO brief for prospect sales conversation
 ```
 
 ---
@@ -84,31 +124,53 @@ INPUT: Company name + website URL
 
 All base skills read from `client-profile.yaml` at runtime. No client context is hardcoded.
 
-| # | Skill | JumpSeat Agent(s) | Input | Artifact | Status | File |
-|---|-------|------------------|-------|----------|--------|------|
-| 0 | JumpSeat Kickoff | All (orchestrator) | Nothing — surveys state | Route to next skill | ✅ Built | [skill-jumpseat-kickoff.md](base/skill-jumpseat-kickoff.md) |
-| 1 | ICP Onboarding | 01 Memory + 02 Foundation | Client website + closed-won accounts | `client-profile.yaml` | ✅ Built | [skill-icp-onboarding.md](base/skill-icp-onboarding.md) |
-| 2 | Signal Hunter | 05 Signal Hunter | `client-profile.yaml` | `signal-library.md` (30–50 candidates → workshop) | ✅ Built | [skill-signal-hunter.md](base/skill-signal-hunter.md) |
-| 3 | Deep Research | 03 Research | Company name + URL + `client-profile.yaml` | `research-brief.json` | ✅ v2.0 — JobSpy + edgartools + jina | [skill-deep-research.md](base/skill-deep-research.md) |
-| 4 | ICP Fit Scoring | 04 Account Fit Review | `research-brief.json` + `client-profile.yaml` | Fit Tier + Fit Score | ✅ Built | [skill-icp-fit-scoring.md](base/skill-icp-fit-scoring.md) |
-| 5 | Signal Research | 05 → 06 → 07 → 08 | `research-brief.json` + `signal-library.md` + `client-profile.yaml` | Signal matrix C/I/N/U | ✅ v2.0 — reads config, source hierarchy defined | [skill-signal-research.md](base/skill-signal-research.md) |
-| 6 | Conviction Algorithm | 07 + 08 | Signal matrix + `client-profile.yaml` | `conviction-output.json` (full scoring breakdown) | ✅ Built | [skill-conviction-algorithm.md](base/skill-conviction-algorithm.md) |
-| 7 | Dossier Builder | 03 + 09 + 16 | `conviction-output.json` | Intelligence dossier (4–5 pages) | ✅ Built | [skill-dossier-builder.md](base/skill-dossier-builder.md) |
-| 8 | Contact Mapping | 09 Contact Mapping | Dossier + `client-profile.yaml` | `contact-map.md` (who to call, why, in what order) | ✅ Built | [skill-contact-mapping.md](base/skill-contact-mapping.md) |
-| 9 | Email Personalization | 12 Cold Email Copywriter | Dossier + contact | Email 1 (≤75w) + Email 2 (≤35w) | ✅ Built | [skill-email-personalization.md](base/skill-email-personalization.md) |
-| 10 | CRM Export | 18 Analytics & Metrics | Signal matrix array + `client-profile.yaml` | CRM-ready CSV | ✅ Built | [skill-salesforce-export.md](base/skill-salesforce-export.md) |
-| 11 | Batch Signal Research | 05 → 08 (parallel) | 100+ accounts via subagent pattern | Batch signal matrices | 🔴 Phase 2 | — |
-| 12 | Signal Re-verification | 05 Signal Hunter | Stale signal flags | Updated signal matrices | 🔴 Phase 2 | — |
-| 13 | Reactivation | 10 Timing Agent | PENDING accounts + trigger conditions | Reactivated accounts → MEDIUM/HIGH | 🔴 Phase 2 | — |
+| # | Skill File | AgentOS Name | Agents | Input | Artifact | Status |
+|---|---|---|---|---|---|---|
+| 0 | [skill-jumpseat-kickoff.md](base/skill-jumpseat-kickoff.md) | si-context-load (partial) | 00 + 01 | Nothing — surveys state | Route to correct skill | ✅ Built |
+| 1 | [skill-icp-onboarding.md](base/skill-icp-onboarding.md) | si-context-load (partial) | 00 + 01 | Client website + closed-won data | `client-profile.yaml` | ✅ Built |
+| 2 | [skill-deep-research.md](base/skill-deep-research.md) | si-account-enrichment | 02 Research | Company name + URL | `research-brief.json` | ✅ v2.0 |
+| 3 | [skill-icp-fit-scoring.md](base/skill-icp-fit-scoring.md) | si-icp-fit-scoring | 03 Account Fit | `research-brief.json` | Fit Tier + Fit Score | ✅ Built |
+| 4 | [skill-signal-hunter.md](base/skill-signal-hunter.md) | — | 04 Signal Hunter | `client-profile.yaml` | `signal-library.md` (workshop) | ✅ Built |
+| 5 | [skill-signal-research.md](base/skill-signal-research.md) | si-signal-research | 04 → 06 → 05 → 07 → 08 | `research-brief.json` + `signal-library.md` | `signal-research.json` (C/I/N/U + implications + timing) | ✅ v2.0 |
+| 6 | [skill-conviction-algorithm.md](base/skill-conviction-algorithm.md) | si-conviction-scoring | 07 + 08 | `signal-research.json` | `conviction-output.json` (score + level + stacking narrative) | ✅ Built |
+| 7 | [skill-dossier-builder.md](base/skill-dossier-builder.md) | si-dossier-generation | 11 + 12 | `conviction-output.json` | `account-narrative.md` + `dossier-[company].md` | ✅ Built |
+| 8 | [skill-contact-mapping.md](base/skill-contact-mapping.md) | si-stakeholder-mapping | 13 + 14 | Dossier + `client-profile.yaml` | `contact-map.md` + `persona-brief.md` | ✅ Built |
+| 9 | [skill-email-personalization.md](base/skill-email-personalization.md) | si-outreach-generation | 15 + 16 | Dossier + contact + persona | Email ×3 variants + 4-touch sequence | ✅ Built |
+| 10 | [skill-salesforce-export.md](base/skill-salesforce-export.md) | — (legacy) | 23 Export & Delivery | Signal matrix array | CRM-ready CSV | ✅ Built (legacy — superseded by skill-qa-export for new sprints) |
+| 11 | [skill-signal-validation.md](base/skill-signal-validation.md) | si-signal-validation | 09 + 10 | `signal-research.json` + sources | `signal-qa-[company].md` + SQAL | ✅ Built |
+| 12 | [skill-qa-export.md](base/skill-qa-export.md) | si-qa-and-export | 22 + 23 | All sprint output files | QA log + CRM export + SE export + delivery summary | ✅ Built |
+| 13 | [skill-hvo-pitch.md](base/skill-hvo-pitch.md) | si-hvo-pitch | 26 | Prospect name + vertical + ICP | SI one-pager + HVO brief + vertical signal examples | ✅ Built |
 
 ### Client Configs
 
-Each client has a folder with their specific config. Skills read these at runtime.
+Each client has a folder with their specific parameters. Skills read these at runtime — client context never goes in the skill files.
 
-| Client | Config | Signal Library | Status |
-|--------|--------|----------------|--------|
-| [Client A] | `client/[client-a]/client-profile.yaml` (local only) | ✅ Active | Active |
-| [Client B] | `client/[client-b]/client-profile.yaml` (local only) | 🔴 Pending | In progress |
+| Client | Config File | Signal Library | Status |
+|--------|-------------|----------------|--------|
+| ISCO Industries | `client/isco/client-profile.yaml` | Pending — discovery session in progress | In progress |
+| Lazer Logistics | `client/lazer/client-profile.yaml` | ✅ Active — 15 signals, 7 categories | Active |
+
+---
+
+## Skill-to-Agent Map
+
+Complete mapping so any team member can navigate between the two registries:
+
+| Phase | Agents | Skill |
+|---|---|---|
+| Onboarding | 00 Memory + 01 Foundation | skill-jumpseat-kickoff + skill-icp-onboarding |
+| Phase I — Research | 02 Research | skill-deep-research |
+| Phase I — Fit Gate | 03 Account Fit | skill-icp-fit-scoring |
+| Phase II — Signal Library | 04 Signal Hunter | skill-signal-hunter |
+| Phase II — Signal Research | 04 → 06 → 05 → 07 → 08 | skill-signal-research + skill-conviction-algorithm |
+| Phase III — QA & List | 09 Signal QA + 10 Account List | skill-signal-validation |
+| Phase IV — Dossier | 11 Account Narrative + 12 Messaging Strategist | skill-dossier-builder |
+| Phase V — Contacts | 13 Contact Mapping + 14 Persona Intelligence | skill-contact-mapping |
+| Phase VI — Outreach | 15 Cold Email + 16 Sequence Design | skill-email-personalization |
+| Phase VII — Always on | 17 Feedback + 18 Reactivation + 19 Analytics + 20 Deal + 21 Prospecting | prompt only |
+| Phase VIII — Export | 22 Workflow Auditor + 23 Export & Delivery | skill-qa-export |
+| Phase IX — Monitoring | 24 Signal Monitor + 25 Program Calibration | prompt only (24 reads skill-signal-research) |
+| HVO | 26 HVO Pitch Builder | skill-hvo-pitch |
 
 ---
 
@@ -116,27 +178,13 @@ Each client has a folder with their specific config. Skills read these at runtim
 
 | Component | Reutilizable | Client-specific |
 |-----------|-------------|-----------------|
-| Research pipeline (web crawl, OSHA, LinkedIn) | ✅ Same for all | — |
+| Research pipeline (web crawl, SEC, LinkedIn) | ✅ Same for all | — |
 | ICP scoring criteria (revenue, size, vertical) | Base logic same | Parameters change per client |
-| Signal list (per client) | Base structure same | Signal definitions change per industry |
+| Signal list | Base structure same | Signal definitions change per industry |
 | Signal weights + conviction algorithm | Base formula same | Weights change per client |
 | Dossier sections + format | Template same | Narrative tone + sales context change |
 | Email rules (75w/35w, no pitch, peer-to-peer) | ✅ Same for all | Lead signal + first-line observation change |
-| Salesforce field mapping | Base mapping same | Custom field names change per SF instance |
-
----
-
-## Skills roadmap (from internal meetings)
-
-1. **ICP Onboarding skill** — conversational intake for any new client → ✅ built as `skill-icp-onboarding.md`; produces `client-profile.yaml` + calibrated `icp-prompt.md`
-2. **ICP Fit Scoring skill** — parameterized so any client's ICP can be loaded in → ✅ built as `skill-icp-fit-scoring.md`
-3. **Email Personalization skill** — one deliverable per client; BD rep runs it in their own Claude → ✅ built as `skill-email-personalization.md`
-4. **Signal Hunter (generic)** — give it the ICP and it proposes signals; client approves in workshop → 🔴 needs to be built
-5. **Conviction Algorithm (standalone)** — currently embedded in Mode A, needs to be visible and explainable → 🟡 needs to be extracted + documented
-6. **Contact Mapping** — who to call, why, in what order → 🔴 needs to be built (Agent 09)
-
-**Dan's rule:** *"If you can't fully explain it, you probably shouldn't be doing it."*  
-Each skill needs to be explainable in one sentence before it's considered done.
+| CRM field mapping | Base mapping same | Custom field names change per CRM instance |
 
 ---
 
@@ -147,17 +195,23 @@ A skill is **done** when it has all of the following:
 - [ ] One-sentence description of what it does
 - [ ] Input clearly defined (what it receives)
 - [ ] Output clearly defined (what artifact it produces)
-- [ ] Which JumpSeat agent runs it
-- [ ] What skill it feeds next in the pipeline
+- [ ] Which agent(s) run it (with correct v3.0 numbers)
+- [ ] Which skill it feeds next in the pipeline
 - [ ] At least one example run (tested on a real account)
 - [ ] Source validation rules (no inferred = confirmed, always cite source)
 - [ ] Reutilizable vs. client-specific components labeled
 
 ---
 
-## Next priorities
+## Next priorities (skills to build)
 
-1. Build **Signal Hunter (generic)** — needed for new client onboarding
-2. Build **Contact Mapping** — Agent 09 is unbuilt
-3. Document **Conviction Algorithm** as standalone — needs to be explainable step by step
-4. Batch processing — run pipeline on 100+ accounts via subagent pattern
+All 14 base skills are complete as of June 2026. ✅
+
+| Priority | Skill | Status |
+|---|---|---|
+| 1 | ~~skill-signal-validation~~ | ✅ Done |
+| 2 | ~~skill-qa-export~~ | ✅ Done |
+| 3 | ~~skill-hvo-pitch~~ | ✅ Done |
+
+**Dan's rule:** *"If you can't fully explain it, you probably shouldn't be doing it."*
+Each skill must be explainable in one sentence before it's considered done.

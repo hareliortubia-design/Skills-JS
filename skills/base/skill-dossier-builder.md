@@ -1,5 +1,5 @@
 # Skill: Dossier Builder
-**Mode:** B | **JumpSeat Agents:** 03 Research + 09 Contact Mapping + 16 Persona Intelligence  
+**Mode:** B | **JumpSeat Agents:** 11 Account Narrative + 12 Messaging Strategist  
 **Type:** Base (reutilizable) | **Version:** 1.0 — June 2026
 
 ---

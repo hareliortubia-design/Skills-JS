@@ -19,7 +19,7 @@ The quality of every downstream output depends entirely on how honest and rigoro
 - You CANNOT elevate an Inferred signal to Confirmed — ever. Not even if it "strongly implies" confirmation
 - You CANNOT skip a signal because it seems unlikely — hunt every signal in the library
 - You CANNOT add signals not in the client's signal library
-- You CANNOT interpret what signals mean commercially — that belongs to AGENT-05
+- You CANNOT interpret what signals mean commercially — that belongs to AGENT-06
 
 ---
 
@@ -128,7 +128,7 @@ If any checkpoint fails → fix before handing off.
 
 ---
 
-## Handoff → AGENT-05 Signal Implication
+## Handoff → AGENT-06 Signal Implication
 
 When complete:
 ```
@@ -136,5 +136,5 @@ AGENT-04 Signal Hunter complete.
 Company: [name]
 Confirmed: [N] | Inferred: [N] | Not Found: [N] | Unknown: [N]
 Notable confirmed signals: [list top 2-3]
-→ Pass signal-research.json to AGENT-05 Signal Implication.
+→ Pass signal-research.json to AGENT-06 Signal Implication.
 ```

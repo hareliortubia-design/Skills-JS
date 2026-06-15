@@ -1,5 +1,5 @@
 # Skill: Signal Hunter
-**JumpSeat Agent:** 05 Signal Hunter  
+**JumpSeat Agent:** 04 Signal Hunter  
 **Type:** Base — works for any client  
 **Version:** 1.0 | June 2026
 

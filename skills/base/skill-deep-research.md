@@ -1,5 +1,5 @@
 # Skill: Deep Research
-**JumpSeat Agent:** 03 Research  
+**JumpSeat Agent:** 02 Research  
 **Type:** Base — works for any client  
 **Version:** 2.0 | June 2026
 

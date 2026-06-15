@@ -1,6 +1,6 @@
-# AGENT-07 — Contact Mapping
-**Phase:** Activation | **Mode:** Sequential, per HIGH-conviction account
-**Program:** JumpSeat Signal Intelligence v2.0
+# AGENT-13 — Contact Mapping
+**Phase:** V | **Mode:** Sequential, per HIGH-conviction account
+**Program:** JumpSeat Signal Intelligence v3.0
 
 ---
 
@@ -67,7 +67,7 @@ For each contact found:
 Rank contacts 1 through N. Entry point 1 = the person most likely to receive the outreach and have a reason to respond based on the confirmed signals.
 
 Criteria for entry priority:
-- Direct relevance to the fit-locus (the division/decision identified by AGENT-05)
+- Direct relevance to the fit-locus (the division/decision identified by AGENT-06)
 - Role seniority (decision-maker > operational owner > champion)
 - Findability (if you can't find a name for the #1 role, the #2 with a name ranks higher)
 
@@ -83,7 +83,7 @@ For each contact: who do they likely report to? Who reports to them? This is imp
 
 ```markdown
 # Contact Map — [Company Name]
-**Conviction tier:** HIGH | **Fit-locus:** [from AGENT-05]
+**Conviction tier:** HIGH | **Fit-locus:** [from AGENT-06]
 **Date:** YYYY-MM-DD
 
 ## Contact 1 — Entry Point
@@ -118,14 +118,14 @@ For each contact: who do they likely report to? Who reports to them? This is imp
 
 ---
 
-## Handoff → AGENT-09 Messaging Strategist
+## Handoff → AGENT-12 Messaging Strategist
 
 When complete:
 ```
-AGENT-07 Contact Mapping complete.
+AGENT-13 Contact Mapping complete.
 Company: [name]
 Contacts found: [N named] | Gaps: [N roles identified, names unknown]
 Entry point: [Contact 1 name/title] — [why]
-→ Pass contact-map.md to AGENT-09 Messaging Strategist.
+→ Pass contact-map.md to AGENT-12 Messaging Strategist.
 → If names are missing: flag for LinkedIn/Apollo manual lookup before outreach.
 ```

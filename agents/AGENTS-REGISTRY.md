@@ -1,6 +1,6 @@
 # JumpSeat Signal Intelligence — Agents Registry
-**Version:** 2.0 | **Maintained by:** Hareli Ortubia | **Last updated:** June 2026
-**Program:** JumpSeat Signal Intelligence (White Paper v2.0, May 2026)
+**Version:** 3.0 | **Maintained by:** Hareli Ortubia | **Last updated:** June 2026
+**Program:** JumpSeat Signal Intelligence Agent OS (27 agents, 00–26)
 
 ---
 
@@ -17,72 +17,108 @@ The agent adopts its identity and runs until it produces its defined output and 
 
 ---
 
-## The 19 Agents
+## The 27 Agents
 
-| # | Agent | Phase | Mode | Input | Output | File |
-|---|---|---|---|---|---|---|
-| 00 | Memory & Learning | Always on | Session-start + end | Previous sessions | methodology-log.md | [agent-00-memory.md](base/agent-00-memory.md) |
-| 01 | Foundation | Setup | Session-start | client-profile.yaml | Session frame + routing | [agent-01-foundation.md](base/agent-01-foundation.md) |
-| 02 | Research | Research | Per account | Company name + URL | research-brief.json | [agent-02-research.md](base/agent-02-research.md) |
-| 03 | Account Fit | Funnel | Per account | research-brief.json | icp-fit-scoring.json | [agent-03-account-fit.md](base/agent-03-account-fit.md) |
-| 04 | Signal Hunter | Signal | Per account | research-brief.json + signals | signal-research.json | [agent-04-signal-hunter.md](base/agent-04-signal-hunter.md) |
-| 05 | Signal Implication | Signal | Per account | signal-research.json | signal-research.json (enriched) | [agent-05-signal-implication.md](base/agent-05-signal-implication.md) |
-| 06 | Prioritization & Stacking | Ranking | Per account | signal-research.json (enriched + timed) | conviction-output.json | [agent-06-prioritization-stacking.md](base/agent-06-prioritization-stacking.md) |
-| 07 | Contact Mapping | Activation | HIGH accounts only | conviction-output.json + dossier | contact-map.md | [agent-07-contact-mapping.md](base/agent-07-contact-mapping.md) |
-| 08 | Timing | Always on | Before AGENT-06 | signal-research.json | Perishability audit (added to signal-research.json) | [agent-08-timing.md](base/agent-08-timing.md) |
-| 09 | Messaging Strategist | Activation | HIGH accounts only | conviction + signals + contacts | dossier-[company].md + messaging-brief | [agent-09-messaging-strategist.md](base/agent-09-messaging-strategist.md) |
-| 10 | Cold Email Copywriter | Outreach | Per contact | messaging-brief + persona-brief | emails-[company].md | [agent-10-cold-email-copywriter.md](base/agent-10-cold-email-copywriter.md) |
-| 11 | Feedback Loop | Always on | After each sprint | All conviction outputs | coverage-audit.md | [agent-11-feedback-loop.md](base/agent-11-feedback-loop.md) |
-| 12 | Objection & Reactivation | Always on | DEPRIORITIZED accounts | conviction outputs (D/F tier) | reactivation-queue.md | [agent-12-objection-reactivation.md](base/agent-12-objection-reactivation.md) |
-| 13 | Deal Acceleration | Pipeline | After first SQL | Active opportunities | Pre-call brief + follow-up | [agent-13-deal-acceleration.md](base/agent-13-deal-acceleration.md) |
-| 14 | Persona | Activation | Alongside AGENT-07 | contact-map.md + signals | persona-brief-[company].md | [agent-14-persona.md](base/agent-14-persona.md) |
-| 15 | Sequence Design | Outreach | Per contact | emails + persona-brief | sequence-[company]-[contact].md | [agent-15-sequence-design.md](base/agent-15-sequence-design.md) |
-| 16 | Analytics | Always on | After outreach activates | conviction outputs + reply data | crm-export.csv + program-metrics.md | [agent-16-analytics.md](base/agent-16-analytics.md) |
-| 17 | Prospecting | Always on | Between sprints | ICP criteria + coverage audit | prospecting-candidates.md | [agent-17-prospecting.md](base/agent-17-prospecting.md) |
+| # | Agent | Phase | Status | Skill | Input | Output | File |
+|---|---|---|---|---|---|---|---|
+| 00 | Memory & Learning | Phase 0 (Always on) | Core | si-context-load | Previous sessions | methodology-log.md | [agent-00-memory.md](base/agent-00-memory.md) |
+| 01 | Foundation | Phase I | Core | si-context-load | client-profile.yaml | Session frame + routing | [agent-01-foundation.md](base/agent-01-foundation.md) |
+| 02 | Research | Phase I | Core | si-account-enrichment | Company name + URL | research-brief.json | [agent-02-research.md](base/agent-02-research.md) |
+| 03 | Account Fit | Phase I | Core | si-icp-fit-scoring | research-brief.json | icp-fit-scoring.json (Tier 1 / Tier 2 / Not ICP) | [agent-03-account-fit.md](base/agent-03-account-fit.md) |
+| 04 | Signal Hunter | Phase II | Core | si-signal-research | research-brief.json + signal-library | signal-research.json (C/I/N/U coded) | [agent-04-signal-hunter.md](base/agent-04-signal-hunter.md) |
+| 05 | Timing | Phase II | Core | prompt only | signal-research.json | Perishability audit — staleness log, expiring-soon flags | [agent-08-timing.md](base/agent-08-timing.md) ¹ |
+| 06 | Signal Implication | Phase II | Core | prompt only | signal-research.json | Implication brief — so-what per signal, fit-locus, B8 rating | [agent-05-signal-implication.md](base/agent-05-signal-implication.md) ¹ |
+| 07 | Conviction Scoring | Phase II | Core | si-conviction-scoring | signal-research.json (enriched + timed) | conviction-output.json — Signal Stack − Barrier − Objection Penalty | [agent-06-prioritization-stacking.md](base/agent-06-prioritization-stacking.md) ¹ |
+| 08 | Prioritization & Stacking | Phase II | Core | prompt only | conviction-output.json | Ranked signal stack — Lead / Support / Context / Hold / Drop | [agent-06-prioritization-stacking.md](base/agent-06-prioritization-stacking.md) ¹ |
+| **09** | **Signal QA** | **Phase III** | **🔴 New** | **si-signal-validation** | signal-research.json + sources | **Signal QA report — C/I/N/U per account, sources, event dates. First client artifact. Rejection log.** | 🔴 To build |
+| **10** | **Account List** | **Phase III** | **🔴 New** | **prompt only** | Signal QA report | **SQAL — Signal Qualified Account List, post-validation. Priority queue HIGH / MEDIUM / LOW / DEPRIORITIZED / FLAG.** | 🔴 To build |
+| **11** | **Account Narrative** | **Phase IV** | **🔴 New** | **prompt only** | SQAL + research-brief.json | **Account narrative — situation, window, honest caveat (dossier sections 1–5). Site portfolio per account.** | 🔴 To build |
+| 12 | Messaging Strategist | Phase IV | Core | si-dossier-generation | conviction-output.json + contacts | Account dossier — full 8-section dossier per HIGH account. Strategic brief per contact. | [agent-09-messaging-strategist.md](base/agent-09-messaging-strategist.md) ¹ |
+| 13 | Contact Mapping | Phase V | Core | si-stakeholder-mapping | Dossier + client-profile.yaml | contact-map.md — 3–5 named contacts per HIGH account: DM, op owner, champion. Entry rationale. | [agent-07-contact-mapping.md](base/agent-07-contact-mapping.md) ¹ |
+| 14 | Persona Intelligence | Phase V | Core | prompt only | contact-map.md + signals | Persona briefs — decision style, motivation, words they use for pain | [agent-14-persona.md](base/agent-14-persona.md) |
+| 15 | Cold Email Copywriter | Phase VI | Core | si-outreach-generation | Dossier + contact + persona-brief | Email variants ×3 — signal-led, implication-led, problem-led — under 75 words each | [agent-10-cold-email-copywriter.md](base/agent-10-cold-email-copywriter.md) ¹ |
+| 16 | Sequence Design | Phase VI | Core | prompt only | Emails + persona-brief | Contact + message + sequence bundle — 4-touch play per contact, SE-platform-ready | [agent-15-sequence-design.md](base/agent-15-sequence-design.md) ¹ |
+| 17 | Feedback Loop | Phase VII (Always on) | Core | prompt only | All conviction outputs | Reply rate by signal report — what worked, by signal type and copy angle. Learning deposit to Agent 00. | [agent-11-feedback-loop.md](base/agent-11-feedback-loop.md) ¹ |
+| 18 | Objection & Reactivation | Phase VII (Always on) | Core | prompt only | DEPRIORITIZED accounts + trigger conditions | Reactivation triggers — accounts re-promoted on new signal. Reactivation copy. | [agent-12-objection-reactivation.md](base/agent-12-objection-reactivation.md) ¹ |
+| 19 | Analytics & Metrics | Phase VII (Always on) | Core | prompt only | Conviction outputs + reply data | Program metrics report — conviction-to-meeting conversion, queue health. System Health Score. | [agent-16-analytics.md](base/agent-16-analytics.md) ¹ |
+| 20 | Deal Acceleration | Phase VII (Always on) | Core | prompt only | Active opportunities | 7-day deal playbook — five levers, one sequence per active opportunity | [agent-13-deal-acceleration.md](base/agent-13-deal-acceleration.md) ¹ |
+| 21 | Prospecting | Phase VII (Always on) | Core | prompt only | ICP criteria + coverage audit | Net-new account candidates — pre-scored, enriched, fed back to Phase I | [agent-17-prospecting.md](base/agent-17-prospecting.md) ¹ |
+| **22** | **Workflow Auditor** | **Phase VIII** | **🔴 New** | **si-qa-and-export** | All stage outputs | **QA log — missing files, incomplete stages, broken handoffs. Repeatability test results.** | 🔴 To build |
+| **23** | **Export & Delivery** | **Phase VIII** | **🔴 New** | **si-qa-and-export** | QA log + all stage outputs | **Google Sheets tracker update. CRM / SE platform export — field-mapped, ready for ingest.** | 🔴 To build |
+| **24** | **Signal Monitor** | **Phase IX** | **🔴 New** | **si-signal-research** | signal-research.json (existing) + perishability windows | **Batch signal update — new signals, expired windows, changed entity status. Re-research triggers.** | 🔴 To build |
+| **25** | **Program Calibration** | **Phase IX** | **🔴 New** | **prompt only** | All sprints — conviction outputs + reply data | **Quarterly methodology audit — signal correlation, drift indicators. Updated signal weights.** | 🔴 To build |
+| **26** | **HVO Pitch Builder** | **HVO** | **🔴 New** | **si-hvo-pitch** | Prospect name + vertical + ICP | **SI one-pager — prospect-specific: methodology, agents, live signals for their vertical. HVO brief — packaging, scope, pricing framing.** | 🔴 To build |
+
+¹ *File exists but has old numbering. Content is valid — rename pending.*
 
 ---
 
-## Pipeline Flow
+## New Agents — Build Priority
+
+| Priority | Agent | Why now |
+|---|---|---|
+| 1 | **09 Signal QA** | Needed for every new client from Phase III. Dan said "really important" — validates signals before they feed dossiers. |
+| 2 | **26 HVO Pitch Builder** | Needed for iCreon pitch (June). Dan has examples ready. |
+| 3 | **11 Account Narrative** | Fills the gap in dossier methodology Dan identified: "We didn't have an agent for the prompts." |
+| 4 | **22 + 23 Workflow Auditor + Export** | Needed for iCreon handover — repeatability phase. |
+| 5 | **24 + 25 Signal Monitor + Calibration** | Post-launch — needed once ISCO or Lazer activate outreach. |
+
+---
+
+## Pipeline Flow (v3.0 — 27 agents)
 
 ```
 SESSION START
   └── AGENT-00 Memory & Learning (loads session, surfaces past learnings)
   └── AGENT-01 Foundation (loads client frame, routes to correct stage)
 
-STAGE 1 — RESEARCH (per account)
+PHASE I — IDEAL CLIENT PROFILE
   └── AGENT-02 Research → research-brief.json
   └── AGENT-03 Account Fit → icp-fit-scoring.json
-        → NOT ICP: STOP → log to AGENT-12 if barriers may resolve
-        → Tier 1 / Tier 2: ADVANCE
+        → NOT ICP: STOP → log to AGENT-18 if barriers may resolve
+        → Tier 1 / Tier 2: ADVANCE to Phase II
 
-STAGE 2 — SIGNAL (per qualified account)
-  └── AGENT-04 Signal Hunter → signal matrix C/I/N/U
-  └── AGENT-05 Signal Implication → so-what + fit-locus
-  └── AGENT-08 Timing → perishability check (stale signals → S)
-  └── AGENT-06 Prioritization & Stacking → conviction-output.json
-        → HIGH: ADVANCE to dossier queue
-        → MEDIUM/LOW: sprint queue
-        → DEPRIORITIZED/FLAG: AGENT-12
+PHASE II — SIGNAL LIBRARY & SIGNAL VALIDATION (per qualified account)
+  └── AGENT-04 Signal Hunter → signal-research.json (C/I/N/U coded)
+  └── AGENT-05 Timing → perishability audit (adds staleness + expiry flags)
+  └── AGENT-06 Signal Implication → so-what per signal + fit-locus + B8 rating
+  └── AGENT-07 Conviction Scoring → conviction-output.json
+  └── AGENT-08 Prioritization & Stacking → ranked signal stack
 
-STAGE 3 — ACTIVATION (HIGH accounts only)
-  └── AGENT-07 Contact Mapping → contact-map.md  ┐ run together
-  └── AGENT-14 Persona → persona-brief.md         ┘
-  └── AGENT-09 Messaging Strategist → dossier + messaging-brief
+PHASE III — SIGNAL BASED ACCOUNT LIST  [NEW]
+  └── AGENT-09 Signal QA → Signal QA report (first client artifact)
+  └── AGENT-10 Account List → SQAL — Signal Qualified Account List
+        → HIGH / MEDIUM / LOW / DEPRIORITIZED / FLAG
 
-STAGE 4 — OUTREACH (per contact)
-  └── AGENT-10 Cold Email Copywriter → emails (Email 1 + 2)
-  └── AGENT-15 Sequence Design → 4-touch sequence
+PHASE IV — DEEP RESEARCH / ACCOUNT DOSSIERS (HIGH accounts only)
+  └── AGENT-11 Account Narrative → situation, window, caveat (sections 1–5)  [NEW]
+  └── AGENT-12 Messaging Strategist → full 8-section dossier + strategic brief per contact
 
-STAGE 5 — PIPELINE (when SQLs exist)
-  └── AGENT-13 Deal Acceleration [OUT OF SCOPE — activates at first meeting]
+PHASE V — CONTACTS & PERSONAS
+  └── AGENT-13 Contact Mapping → contact-map.md (3–5 contacts per account)  ┐ run together
+  └── AGENT-14 Persona Intelligence → persona-brief per contact              ┘
 
-ALWAYS ON (every sprint)
-  └── AGENT-08 Timing → runs before AGENT-06 on every account
-  └── AGENT-11 Feedback Loop → runs after each sprint batch
-  └── AGENT-12 Objection & Reactivation → monitors deprioritized accounts
-  └── AGENT-16 Analytics → CRM export + program metrics
-  └── AGENT-17 Prospecting → surfaces new accounts between sprints
-  └── AGENT-00 Memory & Learning → captures learnings at session end
+PHASE VI — MESSAGING & SEQUENCE STRATEGY (per contact)
+  └── AGENT-15 Cold Email Copywriter → 3 email variants (≤75w each)
+  └── AGENT-16 Sequence Design → 4-touch sequence per contact
+
+PHASE VII — LAUNCH, TRACKING & ANALYSIS (always on)
+  └── AGENT-17 Feedback Loop → reply rate by signal report → feeds AGENT-00
+  └── AGENT-18 Objection & Reactivation → reactivation triggers + copy
+  └── AGENT-19 Analytics & Metrics → program metrics + System Health Score
+  └── AGENT-20 Deal Acceleration → 7-day deal playbook (activates at first meeting)
+  └── AGENT-21 Prospecting → net-new account candidates → feeds back to Phase I
+
+PHASE VIII — PRODUCTION IMPLEMENTATION  [NEW]
+  └── AGENT-22 Workflow Auditor → QA log — missing files, broken handoffs
+  └── AGENT-23 Export & Delivery → CRM/SE platform export, field-mapped
+
+PHASE IX — ONGOING SIGNAL MONITORING  [NEW]
+  └── AGENT-24 Signal Monitor → batch signal update, expired windows, re-research triggers
+  └── AGENT-25 Program Calibration → quarterly methodology audit, updated signal weights
+
+HVO (runs independently)
+  └── AGENT-26 HVO Pitch Builder → prospect-specific SI one-pager + HVO brief  [NEW]
 ```
 
 ---
@@ -91,21 +127,21 @@ ALWAYS ON (every sprint)
 
 | Tier | Criteria | Action |
 |---|---|---|
-| **HIGH** | 3+ confirmed signals, clean fit-locus, no hard barriers | Advance to dossier queue |
+| **HIGH** | 3+ confirmed signals, clean fit-locus, no hard barriers | Advance to Phase IV (dossier queue) |
 | **HIGH*** | 3+ confirmed signals, provisional fit-locus | Flag for human review before dossier |
 | **MEDIUM** | 2 confirmed signals, OR 3+ with mismatched locus or soft barrier | Sprint queue |
 | **LOW** | 1 confirmed signal | Monitor queue |
-| **DEPRIORITIZED** | Valid target, barrier or timing blocks it | AGENT-12 — monitor for reactivation |
-| **FLAG** | Structural block today | AGENT-12 — hard barrier, needs clear-condition |
+| **DEPRIORITIZED** | Valid target, barrier or timing blocks it | AGENT-18 — monitor for reactivation |
+| **FLAG** | Structural block today | AGENT-18 — hard barrier, needs clear-condition |
 
 ---
 
 ## Signal Codes
 
 Signal codes and definitions live in each client's `client-profile.yaml`.
-The code format is: `[CATEGORY]-[NUMBER]` (e.g., PJ-01 = Project signal #1).
+Format: `[CATEGORY]-[NUMBER]` (e.g., PJ-01 = Project signal #1).
 
-Standard categories used across all clients:
+Standard categories:
 - **PJ** — Project (capital projects, expansions, facility investments)
 - **LS** — Leadership (new hires, role changes, org shifts)
 - **GR** — Growth (revenue signals, expansion news, acquisitions)
@@ -119,12 +155,9 @@ Standard categories used across all clients:
 
 ## Client Configs
 
-Each client has a `client-profile.yaml` in `skills/client/[client]/`.
-This file is the foundation every agent reads. It never lives in the GitHub repo.
-
 | Client | Config | Status |
 |---|---|---|
-| ISCO Industries | `skills/client/isco/client-profile.yaml` | v0.5 — 8 gaps pending discovery |
+| ISCO Industries | `skills/client/isco/client-profile.yaml` | v0.5 — gaps pending discovery session |
 | Lazer Logistics | `skills/client/lazer/client-profile.yaml` | Active |
 
 ---

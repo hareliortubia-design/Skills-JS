@@ -1,5 +1,5 @@
 # Skill: Signal Research
-**JumpSeat Agents:** 05 Signal Hunter → 06 Signal Implication → 07 Signal Conviction → 08 Prioritization & Stacking  
+**JumpSeat Agents:** 04 Signal Hunter → 06 Signal Implication → 05 Timing → 07 Conviction Scoring → 08 Prioritization & Stacking  
 **Type:** Base — works for any client  
 **Version:** 2.0 | June 2026
 

@@ -1,5 +1,5 @@
 # Skill: Email Personalization
-**Mode:** C | **JumpSeat Agent:** 12 Cold Email Copywriter  
+**Mode:** C | **JumpSeat Agents:** 15 Cold Email Copywriter + 16 Sequence Design  
 **Type:** Base (reutilizable) | **Version:** 1.0 — June 2026
 
 ---

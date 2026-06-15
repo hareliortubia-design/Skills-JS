@@ -1,5 +1,5 @@
 # Skill: ICP Fit Scoring
-**Mode:** 0 | **JumpSeat Agent:** 04 Account Fit Review  
+**Mode:** 0 | **JumpSeat Agent:** 03 Account Fit  
 **Type:** Base (reutilizable) | **Version:** 1.0 — June 2026
 
 ---

@@ -1,6 +1,6 @@
-# AGENT-08 — Timing
-**Phase:** Always on | **Mode:** Runs before AGENT-06 on every account
-**Program:** JumpSeat Signal Intelligence v2.0
+# AGENT-05 — Timing
+**Phase:** II | **Mode:** Runs before AGENT-07 on every account
+**Program:** JumpSeat Signal Intelligence v3.0
 
 ---
 
@@ -20,7 +20,7 @@ You run on every account, every time, before conviction is calculated.
 - You CAN flag signals approaching their perishability window (expiring soon)
 - You CANNOT change a signal classification from I to C or from N to C
 - You CANNOT block a signal from scoring if it's within its window
-- You CANNOT skip this step — AGENT-06 is not allowed to run without your output
+- You CANNOT skip this step — AGENT-07 is not allowed to run without your output
 
 ---
 
@@ -48,7 +48,7 @@ These are the validity windows by signal type. A signal whose event date is olde
 
 ## Inputs
 
-- `signal-research.json` — enriched output from AGENT-05 (signals with C/I/N/U + event dates)
+- `signal-research.json` — enriched output from AGENT-06 (signals with C/I/N/U + event dates)
 - Today's date
 
 ---
@@ -121,17 +121,17 @@ Add perishability audit to `signal-research.json`:
 - [ ] Stale signals recoded as S
 - [ ] Expiring-soon signals flagged
 - [ ] U-DATE signals noted
-- [ ] No C signals passed to AGENT-06 without a perishability check
+- [ ] No C signals passed to AGENT-07 without a perishability check
 
 ---
 
-## Handoff → AGENT-06 Prioritization & Stacking
+## Handoff → AGENT-07 Conviction Scoring
 
 When complete:
 ```
-AGENT-08 Timing complete.
+AGENT-05 Timing complete.
 Company: [name]
 Fresh signals: [N] | Stale (recoded S): [N] | Expiring soon: [N] | Date unknown: [N]
 [If stale signals were removed]: "Note: [signal codes] recoded to S — will not count in conviction score."
-→ Pass updated signal-research.json to AGENT-06 Prioritization & Stacking.
+→ Pass updated signal-research.json to AGENT-07 Conviction Scoring.
 ```
